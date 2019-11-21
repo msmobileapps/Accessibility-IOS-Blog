@@ -27,7 +27,7 @@ class AudioToText{
     
     private init(){}
     
-    private func requestPermission() {
+    func requestPermission() {
         SFSpeechRecognizer.requestAuthorization { (status) in
             switch status {
             case .authorized:
@@ -44,7 +44,7 @@ class AudioToText{
         }
     }
     
-    private func setAudioCategoryToPlayAndRecord() {
+    func setAudioCategoryToPlayAndRecord() {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: .mixWithOthers)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -55,7 +55,7 @@ class AudioToText{
     
     //MARK: Live audio to text
     
-    private func defineAudioEngineProperties() {
+    func defineAudioEngineProperties() {
         setAudioCategoryToPlayAndRecord()
         //AVAudioEngine creates a singleton and set the correct nodes needed to process the audio bit
         node = avAudioEngine.inputNode
@@ -65,7 +65,7 @@ class AudioToText{
         }
     }
     
-    private func startRecording(complition: @escaping (_ : SFSpeechRecognitionResult?) -> Void) {
+    func startRecording(complition: @escaping (_ : SFSpeechRecognitionResult?) -> Void) {
         if !isPermissionRequesed{
             requestPermission()
             isPermissionRequesed = true
@@ -85,7 +85,7 @@ class AudioToText{
         }
     }
     
-    private func stopRecording() {
+    func stopRecording() {
         avAudioEngine.stop()
         request.endAudio()
         recognitionTask?.cancel()
