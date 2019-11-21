@@ -130,35 +130,39 @@ extension SecondViewController: AVSpeechSynthesizerDelegate{
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         DispatchQueue.main.async { [unowned self] in
-            self.playIcon.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
-            self.pauseIcon.setBackgroundImage(UIImage(systemName: "pause"), for: .normal)
+            self.setPlayAndPauseIcons(firstStringName: "play.fill", secondStringName: "pause")
         }
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didPause utterance: AVSpeechUtterance) {
         DispatchQueue.main.async { [unowned self] in
-            self.playIcon.setBackgroundImage(UIImage(systemName: "play"), for: .normal)
-            self.pauseIcon.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
+            self.setPlayAndPauseIcons(firstStringName: "play", secondStringName: "pause.fill")
         }
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didContinue utterance: AVSpeechUtterance) {
         DispatchQueue.main.async { [unowned self] in
-            self.playIcon.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
-            self.pauseIcon.setBackgroundImage(UIImage(systemName: "pause"), for: .normal)
+            self.setPlayAndPauseIcons(firstStringName: "play.fill", secondStringName: "pause")
         }
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         DispatchQueue.main.async { [unowned self] in
-            self.playIcon.setBackgroundImage(UIImage(systemName: "play"), for: .normal)
-            self.pauseIcon.setBackgroundImage(UIImage(systemName: "pause"), for: .normal)
+            self.setPlayAndPauseIcons(firstStringName: "play", secondStringName: "pause")
         }
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         DispatchQueue.main.async { [unowned self] in
-            self.playIcon.setBackgroundImage(UIImage(systemName: "play"), for: .normal)
-            self.pauseIcon.setBackgroundImage(UIImage(systemName: "pause"), for: .normal)
+            self.setPlayAndPauseIcons(firstStringName: "play", secondStringName: "pause")
         }
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) { }
+    
+    func setPlayAndPauseIcons(firstStringName: String, secondStringName: String){
+        if #available(iOS 13.0, *) {
+            self.playIcon.setBackgroundImage(UIImage(systemName: firstStringName), for: .normal)
+            self.pauseIcon.setBackgroundImage(UIImage(systemName: secondStringName), for: .normal)
+        } else {
+            //TODO: Change images
+        }
+    }
 }
 
 
@@ -168,7 +172,11 @@ extension SecondViewController{
         private func startRecording() {
             
             recordMeButton.setTitle("Stop Recording", for: .normal)
-            recordMeIcon.setBackgroundImage(UIImage(systemName: "mic.fill"), for: .normal)
+            if #available(iOS 13.0, *) {
+                recordMeIcon.setBackgroundImage(UIImage(systemName: "mic.fill"), for: .normal)
+            } else {
+                //TODO: change image
+            }
             swichPauseStopContinueStateTo(false)
             
             audioToText.startRecording { [unowned self] (result) in
@@ -184,7 +192,11 @@ extension SecondViewController{
             audioToText.stopRecording()
             
             recordMeButton.setTitle("Record Me", for: .normal)
-            recordMeIcon.setBackgroundImage(UIImage(systemName: "mic"), for: .normal)
+            if #available(iOS 13.0, *) {
+                recordMeIcon.setBackgroundImage(UIImage(systemName: "mic"), for: .normal)
+            } else {
+                //TODO: change image
+            }
         }
 }
 
@@ -228,12 +240,20 @@ extension SecondViewController{
         if !shouldPlay {
             audioToText.audioPlayer?.stop()
             audioToText.recognitionTask?.cancel()
-            playSongIcon.setBackgroundImage(UIImage(systemName: "play"), for: .normal)
+            if #available(iOS 13.0, *) {
+                playSongIcon.setBackgroundImage(UIImage(systemName: "play"), for: .normal)
+            } else {
+                //TODO: change image
+            }
             playSongButton.setTitle("Play Song", for: .normal)
             lyricsLabel.text = ""
         }
         else{
-            playSongIcon.setBackgroundImage(UIImage(systemName: "stop"), for: .normal)
+            if #available(iOS 13.0, *) {
+                playSongIcon.setBackgroundImage(UIImage(systemName: "stop"), for: .normal)
+            } else {
+                //TODO: change image
+            }
             playSongButton.setTitle("Stop Song", for: .normal)
         }
     }
