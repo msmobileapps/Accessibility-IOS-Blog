@@ -28,18 +28,6 @@ class SecondViewController: UIViewController {
     let textToSpeech = TextToSpeech.shared
     let audioToText = AudioToText.shared
     
-//    var audioPlayer: AVAudioPlayer?
-//
-//    let avAudioEngine = AVAudioEngine()
-//    var node:AVAudioInputNode?
-//    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer() //the local parametar is automatically the device location
-//    let request = SFSpeechAudioBufferRecognitionRequest()
-//    var recognitionTask: SFSpeechRecognitionTask?
-//
-//    var isPermissionRequesed = false
-//    var isRecordEngineDefined = false
-//    var isPlaying = false
-    
     @IBAction func readTextWasPressed(_ sender: UIButton) {
         if audioToText.avAudioEngine.isRunning{
             stopRecording()
