@@ -63,6 +63,7 @@ class AudioToText{
         node!.installTap(onBus: 0, bufferSize: 1024, format: outputFormat) { [unowned self] (buffer, _) in
             self.request.append(buffer)
         }
+        isRecordEngineDefined = true
     }
     
     func startRecording(complition: @escaping (_ : SFSpeechRecognitionResult?) -> Void) {
@@ -79,6 +80,9 @@ class AudioToText{
                 recognitionTask = speechRecognizer?.recognitionTask(with: request) { (result, _) in
                     complition(result)
                 }
+            }
+            else{
+                complition(SFSpeechRecognitionResult())
             }
         } catch {
             print(error)

@@ -65,15 +65,19 @@ class SecondViewController: UIViewController {
         textToSpeech.avSpeechSynthesizer.continueSpeaking() //resume speech
     }
     @IBAction func recordMeWasPressed(_ sender: UIButton) {
+        recordMeButton.setTitle("Loading..", for: .normal)
         if textToSpeech.avSpeechSynthesizer.isSpeaking{
             textToSpeech.avSpeechSynthesizer.stopSpeaking(at: .immediate)
         }
         if !audioToText.isRecordEngineDefined{
-            defineAudioEngineProperties()
-            audioToText.isRecordEngineDefined = true
+            audioToText.defineAudioEngineProperties()
+            recordMeButton.isEnabled = false
+            recordMeIcon.isEnabled = false
         }
         if !audioToText.avAudioEngine.isRunning{
             startRecording()
+            recordMeButton.isEnabled = true
+            recordMeIcon.isEnabled = true
         }
         else{
             stopRecording()
@@ -161,17 +165,11 @@ extension SecondViewController: AVSpeechSynthesizerDelegate{
 //MARK: Live voice to text
 extension SecondViewController{
         
-        private func defineAudioEngineProperties() {
-            audioToText.setAudioCategoryToPlayAndRecord()
-            //AVAudioEngine creates a singleton and set the correct nodes needed to process the audio bit
-            audioToText.node = audioToText.avAudioEngine.inputNode
-            let outputFormat = audioToText.node!.outputFormat(forBus: 0)
-            audioToText.node!.installTap(onBus: 0, bufferSize: 1024, format: outputFormat) { [unowned self] (buffer, _) in
-                self.audioToText.request.append(buffer)
-            }
-        }
-        
         private func startRecording() {
+            
+            recordMeButton.setTitle("Stop Recording", for: .normal)
+            recordMeIcon.setBackgroundImage(UIImage(systemName: "mic.fill"), for: .normal)
+            swichPauseStopContinueStateTo(false)
             
             audioToText.startRecording { [unowned self] (result) in
                 guard let result = result else {return}
@@ -179,9 +177,6 @@ extension SecondViewController{
                 self.wordsToSayTextField.text = transcription.formattedString
             }
             
-            recordMeButton.setTitle("Stop Recording", for: .normal)
-            recordMeIcon.setBackgroundImage(UIImage(systemName: "mic.fill"), for: .normal)
-            swichPauseStopContinueStateTo(false)
         }
         
         private func stopRecording() {

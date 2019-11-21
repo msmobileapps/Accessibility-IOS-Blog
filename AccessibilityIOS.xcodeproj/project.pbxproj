@@ -12,7 +12,6 @@
 		DA9B53A223851CDA00067988 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9B53A123851CDA00067988 /* ViewController.swift */; };
 		DA9B53A523851CDA00067988 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9B53A323851CDA00067988 /* Main.storyboard */; };
 		DA9B53A823851CDA00067988 /* AccessibilityIOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA9B53A623851CDA00067988 /* AccessibilityIOS.xcdatamodeld */; };
-		DA9B53AA23851CDB00067988 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA9B53A923851CDB00067988 /* Assets.xcassets */; };
 		DA9B53AD23851CDB00067988 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9B53AB23851CDB00067988 /* LaunchScreen.storyboard */; };
 		DA9B53B72385393D00067988 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9B53B62385393D00067988 /* AudioToolbox.framework */; };
 		DA9B53BA2385561B00067988 /* LoveTheWayYouLie.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA9B53B92385561B00067988 /* LoveTheWayYouLie.mp3 */; };
@@ -28,7 +27,6 @@
 		DA9B53A123851CDA00067988 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DA9B53A423851CDA00067988 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA9B53A723851CDA00067988 /* AccessibilityIOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AccessibilityIOS.xcdatamodel; sourceTree = "<group>"; };
-		DA9B53A923851CDB00067988 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA9B53AC23851CDB00067988 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA9B53AE23851CDB00067988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA9B53B42385393D00067988 /* AccessibilityIOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AccessibilityIOS.entitlements; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 				DA9B53C823868F9700067988 /* models */,
 				DA9B53C723868F8F00067988 /* controllers */,
 				DA9B53A323851CDA00067988 /* Main.storyboard */,
-				DA9B53A923851CDB00067988 /* Assets.xcassets */,
 				DA9B53AE23851CDB00067988 /* Info.plist */,
 				DA9B53A623851CDA00067988 /* AccessibilityIOS.xcdatamodeld */,
 			);
@@ -187,7 +184,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA9B53AD23851CDB00067988 /* LaunchScreen.storyboard in Resources */,
-				DA9B53AA23851CDB00067988 /* Assets.xcassets in Resources */,
 				DA9B53A523851CDA00067988 /* Main.storyboard in Resources */,
 				DA9B53BA2385561B00067988 /* LoveTheWayYouLie.mp3 in Resources */,
 			);
