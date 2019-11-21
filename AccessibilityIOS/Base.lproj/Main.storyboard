@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AccessibilityIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Place your text here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H8j-Am-zuH">
+                                <rect key="frame" x="40" y="207" width="334" height="34"/>
+                                <accessibility key="accessibilityConfiguration" hint="Place your text here" label="Text container"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gWT-iV-0Ys">
+                                <rect key="frame" x="85.5" y="289" width="98" height="51.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZx-ld-D1G">
+                                        <rect key="frame" x="0.0" y="0.0" width="98" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" label="Read the text button">
+                                            <accessibilityTraits key="traits" button="YES" playsSound="YES"/>
+                                        </accessibility>
+                                        <state key="normal" title="Read The Text"/>
+                                        <connections>
+                                            <action selector="readTextWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RBs-No-HpD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4w-wc-RO9" userLabel="Read The Text Icon">
+                                        <rect key="frame" x="41.5" y="31.5" width="15.5" height="18"/>
+                                        <accessibility key="accessibilityConfiguration" label="Read the text icon">
+                                            <accessibilityTraits key="traits" button="YES" playsSound="YES"/>
+                                        </accessibility>
+                                        <state key="normal" backgroundImage="play" catalog="system"/>
+                                        <connections>
+                                            <action selector="readTextWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cYz-fg-uAh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8ic-tI-Ovb">
+                                <rect key="frame" x="82.5" y="380.5" width="42" height="52"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZS3-Hi-3rb">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
+                                        <state key="normal" title="Pause"/>
+                                        <connections>
+                                            <action selector="pauseWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QXp-W1-mO5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NwM-Pc-Ga7" userLabel="Pause Icon">
+                                        <rect key="frame" x="15.5" y="32" width="11" height="18"/>
+                                        <state key="normal" backgroundImage="pause" catalog="system"/>
+                                        <connections>
+                                            <action selector="pauseWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oZ0-9U-Ows"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qQi-nS-2ij">
+                                <rect key="frame" x="279.5" y="379" width="62" height="53"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fC-Gc-xeJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
+                                        <state key="normal" title="Continue"/>
+                                        <connections>
+                                            <action selector="continueWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1jw-Ru-kRB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8g-8g-7mn" userLabel="Continue Icon">
+                                        <rect key="frame" x="21.5" y="32.5" width="19.5" height="18"/>
+                                        <state key="normal" backgroundImage="arrow.right" catalog="system"/>
+                                        <connections>
+                                            <action selector="continueWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4oy-56-Uah"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WS3-tw-JoS">
+                                <rect key="frame" x="191" y="380.5" width="32" height="52"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Z3-HQ-9fQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="30"/>
+                                        <state key="normal" title="Stop"/>
+                                        <connections>
+                                            <action selector="stopWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ehO-FA-moX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0T-gq-m0H" userLabel="Stop Icon">
+                                        <rect key="frame" x="7" y="32" width="18" height="18"/>
+                                        <state key="normal" backgroundImage="stop" catalog="system"/>
+                                        <connections>
+                                            <action selector="stopWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jvt-Pl-RMU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="G89-0c-STJ">
+                                <rect key="frame" x="242.5" y="289" width="74" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1v-MK-2ed">
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="30"/>
+                                        <state key="normal" title="Record Me"/>
+                                        <connections>
+                                            <action selector="recordMeWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TZZ-QK-lJw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8R-vj-bic" userLabel="Record Me Icon">
+                                        <rect key="frame" x="28.5" y="29.5" width="17" height="20"/>
+                                        <state key="normal" backgroundImage="mic" catalog="system"/>
+                                        <connections>
+                                            <action selector="recordMeWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PdL-aH-kwy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCB-pB-8cw">
+                                <rect key="frame" x="24" y="626" width="366" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SU1-I6-vNV">
+                                <rect key="frame" x="173" y="534.5" width="68" height="51.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPu-cf-H0h">
+                                        <rect key="frame" x="0.0" y="0.0" width="68" height="30"/>
+                                        <state key="normal" title="Play Song"/>
+                                        <connections>
+                                            <action selector="playSongWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IdG-yx-TvC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WxZ-bO-3GN" userLabel="Read The Text Icon">
+                                        <rect key="frame" x="26.5" y="31.5" width="15.5" height="18"/>
+                                        <state key="normal" backgroundImage="play" catalog="system"/>
+                                        <connections>
+                                            <action selector="playSongWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qVw-nr-hsg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="G89-0c-STJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.35" id="1Jz-xK-RlO"/>
+                            <constraint firstItem="G89-0c-STJ" firstAttribute="top" secondItem="H8j-Am-zuH" secondAttribute="bottom" constant="48" id="2Xn-lG-mNF"/>
+                            <constraint firstItem="SU1-I6-vNV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="40I-kJ-3cV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QCB-pB-8cw" secondAttribute="trailing" constant="24" id="47p-xK-xGq"/>
+                            <constraint firstItem="gWT-iV-0Ys" firstAttribute="top" secondItem="H8j-Am-zuH" secondAttribute="bottom" constant="48" id="6CV-05-Opn"/>
+                            <constraint firstItem="QCB-pB-8cw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="6ZU-pf-7oE"/>
+                            <constraint firstItem="H8j-Am-zuH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="9Lk-QC-0QZ"/>
+                            <constraint firstItem="H8j-Am-zuH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.5" id="9xk-2F-tW7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H8j-Am-zuH" secondAttribute="trailing" constant="40" id="AeO-q6-MQO"/>
+                            <constraint firstItem="8ic-tI-Ovb" firstAttribute="top" secondItem="gWT-iV-0Ys" secondAttribute="bottom" constant="40" id="INW-6Z-yKL"/>
+                            <constraint firstItem="QCB-pB-8cw" firstAttribute="top" secondItem="SU1-I6-vNV" secondAttribute="bottom" constant="40" id="Lj6-Qd-o1v"/>
+                            <constraint firstItem="qQi-nS-2ij" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.5" id="Lwf-Cr-eDG"/>
+                            <constraint firstItem="SU1-I6-vNV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.25" id="TCN-XP-9Ps"/>
+                            <constraint firstItem="gWT-iV-0Ys" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.65" id="a7r-LS-L0p"/>
+                            <constraint firstItem="WS3-tw-JoS" firstAttribute="top" secondItem="gWT-iV-0Ys" secondAttribute="bottom" constant="40" id="fIM-t3-L4Z"/>
+                            <constraint firstItem="WS3-tw-JoS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lNm-Ip-Haf"/>
+                            <constraint firstItem="qQi-nS-2ij" firstAttribute="top" secondItem="G89-0c-STJ" secondAttribute="bottom" constant="40" id="nnf-V6-Mmr"/>
+                            <constraint firstItem="8ic-tI-Ovb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.5" id="u0b-ux-bsH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="6fC-Gc-xeJ" id="6Py-0Q-9gg"/>
+                        <outlet property="continueIcon" destination="O8g-8g-7mn" id="VKC-Ba-lc1"/>
+                        <outlet property="lyricsLabel" destination="QCB-pB-8cw" id="L07-6D-otb"/>
+                        <outlet property="pauseButton" destination="ZS3-Hi-3rb" id="9qY-w9-fYY"/>
+                        <outlet property="pauseIcon" destination="NwM-Pc-Ga7" id="eiQ-WS-7PP"/>
+                        <outlet property="playIcon" destination="d4w-wc-RO9" id="tv7-8d-Y4K"/>
+                        <outlet property="playSongButton" destination="sPu-cf-H0h" id="Yl0-sv-iO1"/>
+                        <outlet property="playSongIcon" destination="WxZ-bO-3GN" id="8Xo-b4-1er"/>
+                        <outlet property="recordMeButton" destination="a1v-MK-2ed" id="aLE-OI-pAM"/>
+                        <outlet property="recordMeIcon" destination="p8R-vj-bic" id="MBq-nq-oar"/>
+                        <outlet property="stopButton" destination="5Z3-HQ-9fQ" id="Zh8-VU-AWS"/>
+                        <outlet property="stopIcon" destination="V0T-gq-m0H" id="EyB-pt-QU4"/>
+                        <outlet property="wordsToSayTextField" destination="H8j-Am-zuH" id="G16-bL-arx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow.right" catalog="system" width="64" height="48"/>
+        <image name="mic" catalog="system" width="54" height="64"/>
+        <image name="pause" catalog="system" width="44" height="64"/>
+        <image name="play" catalog="system" width="60" height="64"/>
+        <image name="stop" catalog="system" width="64" height="56"/>
+    </resources>
+</document>
