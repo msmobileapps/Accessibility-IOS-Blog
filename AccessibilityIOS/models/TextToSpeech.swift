@@ -8,7 +8,7 @@
 
 import AVFoundation
 
-class TextToSpeech{
+public class TextToSpeech{
     
     public static let shared = TextToSpeech()
     

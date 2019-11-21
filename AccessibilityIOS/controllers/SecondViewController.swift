@@ -25,66 +25,66 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var playSongButton: UIButton!
     @IBOutlet weak var playSongIcon: UIButton!
     
-    let avSpeechSynthesizer = AVSpeechSynthesizer()
-    var avSpeechUtterance:AVSpeechUtterance?
+    let textToSpeech = TextToSpeech.shared
+    let audioToText = AudioToText.shared
     
-    var audioPlayer: AVAudioPlayer?
-    
-    let avAudioEngine = AVAudioEngine()
-    var node:AVAudioInputNode?
-    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer() //the local parametar is automatically the device location
-    let request = SFSpeechAudioBufferRecognitionRequest()
-    var recognitionTask: SFSpeechRecognitionTask?
-    
-    var isPermissionRequesed = false
-    var isRecordEngineDefined = false
-    var isPlaying = false
+//    var audioPlayer: AVAudioPlayer?
+//
+//    let avAudioEngine = AVAudioEngine()
+//    var node:AVAudioInputNode?
+//    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer() //the local parametar is automatically the device location
+//    let request = SFSpeechAudioBufferRecognitionRequest()
+//    var recognitionTask: SFSpeechRecognitionTask?
+//
+//    var isPermissionRequesed = false
+//    var isRecordEngineDefined = false
+//    var isPlaying = false
     
     @IBAction func readTextWasPressed(_ sender: UIButton) {
-        if avAudioEngine.isRunning{
+        if audioToText.avAudioEngine.isRunning{
             stopRecording()
         }
-        setAudioCategoryToPlayback()
+        textToSpeech.setAudioCategoryToPlayback()
         if !setSpeechWord(){
             return
         }
         swichPauseStopContinueStateTo(true)
-        if avSpeechUtterance != nil{
-            if !avSpeechSynthesizer.isSpeaking{ //check if other speech is not already in progress
-                avSpeechSynthesizer.speak(avSpeechUtterance!) //start speech
+        if textToSpeech.avSpeechUtterance != nil{
+            if !textToSpeech.avSpeechSynthesizer.isSpeaking{ //check if other speech is not already in progress
+                textToSpeech.avSpeechSynthesizer.speak(textToSpeech.avSpeechUtterance!) //start speech
             }
             else{
-                avSpeechSynthesizer.stopSpeaking(at: .immediate)
+                textToSpeech.avSpeechSynthesizer.stopSpeaking(at: .immediate)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
-                    self.avSpeechSynthesizer.speak(self.avSpeechUtterance!) //start speech
+                    self.textToSpeech.avSpeechSynthesizer.speak(self.textToSpeech.avSpeechUtterance!) //start speech
                 }
             }
         }
     }
     @IBAction func pauseWasPressed(_ sender: UIButton) {
-        if avSpeechSynthesizer.isSpeaking{
-            avSpeechSynthesizer.pauseSpeaking(at: .immediate) //pauses speech imidiatly
+        if textToSpeech.avSpeechSynthesizer.isSpeaking{
+            textToSpeech.avSpeechSynthesizer.pauseSpeaking(at: .immediate) //pauses speech imidiatly
             //avSpeechSynthesizer.pauseSpeaking(at: .word) -> pauses after the word ends
         }
     }
     @IBAction func stopWasPressed(_ sender: UIButton) {
-        if avSpeechSynthesizer.isSpeaking{
-            avSpeechSynthesizer.stopSpeaking(at: .immediate) //stops speech imidiatly
+        if textToSpeech.avSpeechSynthesizer.isSpeaking{
+            textToSpeech.avSpeechSynthesizer.stopSpeaking(at: .immediate) //stops speech imidiatly
             //avSpeechSynthesizer.stopSpeaking(at: .word) -> stops after the word ends
         }
     }
     @IBAction func continueWasPressed(_ sender: UIButton) {
-        avSpeechSynthesizer.continueSpeaking() //resume speech
+        textToSpeech.avSpeechSynthesizer.continueSpeaking() //resume speech
     }
     @IBAction func recordMeWasPressed(_ sender: UIButton) {
-        if avSpeechSynthesizer.isSpeaking{
-            avSpeechSynthesizer.stopSpeaking(at: .immediate)
+        if textToSpeech.avSpeechSynthesizer.isSpeaking{
+            textToSpeech.avSpeechSynthesizer.stopSpeaking(at: .immediate)
         }
-        if !isRecordEngineDefined{
+        if !audioToText.isRecordEngineDefined{
             defineAudioEngineProperties()
-            isRecordEngineDefined = true
+            audioToText.isRecordEngineDefined = true
         }
-        if !avAudioEngine.isRunning{
+        if !audioToText.avAudioEngine.isRunning{
             startRecording()
         }
         else{
@@ -92,7 +92,7 @@ class SecondViewController: UIViewController {
         }
     }
     @IBAction func playSongWasPressed(_ sender: UIButton) {
-        if isPlaying{
+        if audioToText.isPlaying{
             setPlayingSongTo(false)
         }
         else{
@@ -105,7 +105,7 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initAccesibility()
-        avSpeechSynthesizer.delegate = self
+        textToSpeech.avSpeechSynthesizer.delegate = self
         hideKeyboardWhenTappedAround()
         swichPauseStopContinueStateTo(false)
     }
@@ -115,34 +115,13 @@ class SecondViewController: UIViewController {
 //MARK: Text to speech
 extension SecondViewController: AVSpeechSynthesizerDelegate{
     
-    private func setAudioCategoryToPlayback() {
-        do{
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-            try AVAudioSession.sharedInstance().setActive(true)
-        }catch{
-            print(error)
-        }
-    }
-    
     private func setSpeechWord() -> Bool{
         let wordsFromUser = wordsToSayTextField.text
         if wordsFromUser == nil || wordsFromUser == ""{
             return false
         }
-        avSpeechUtterance = AVSpeechUtterance(string: wordsFromUser!)
         
-        var language = "en"
-        if let inputLanguage = NSLinguisticTagger.dominantLanguage(for: wordsFromUser!) {
-            language = inputLanguage
-        }
-        avSpeechUtterance!.voice = AVSpeechSynthesisVoice(language: language)
-        //utterance.voice = AVSpeechSynthesisVoice(identifier: "com.apple.ttsbundle.Karen-compact") -> another option
-        
-        avSpeechUtterance!.rate = 0.5 // -> deafult, 0-1 range
-        avSpeechUtterance!.pitchMultiplier = 1 // -> deafult, 0.5-2 range
-        avSpeechUtterance!.volume = 0.5 //0-1 range
-        avSpeechUtterance!.preUtteranceDelay = 0
-        avSpeechUtterance!.postUtteranceDelay = 0
+        textToSpeech.setSpeechWord(wordsFromUser!)
         
         return true
     }
@@ -193,62 +172,23 @@ extension SecondViewController: AVSpeechSynthesizerDelegate{
 
 //MARK: Live voice to text
 extension SecondViewController{
-    
-        private func setAudioCategoryToPlayAndRecord() {
-            do {
-                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: .mixWithOthers)
-                try AVAudioSession.sharedInstance().setActive(true)
-            } catch {
-                print(error)
-            }
-        }
-        
-        private func requestPermission() {
-            SFSpeechRecognizer.requestAuthorization { (status) in
-                switch status {
-                case .authorized:
-                    print("Speech recognition authorized")
-                case .denied:
-                    print("Speech recognition authorization denied")
-                case .restricted:
-                    print("Not available on this device")
-                case .notDetermined:
-                    print("Not determined")
-                @unknown default:
-                    print("Unknown")
-                }
-            }
-        }
         
         private func defineAudioEngineProperties() {
-            setAudioCategoryToPlayAndRecord()
+            audioToText.setAudioCategoryToPlayAndRecord()
             //AVAudioEngine creates a singleton and set the correct nodes needed to process the audio bit
-            node = avAudioEngine.inputNode
-            let outputFormat = node!.outputFormat(forBus: 0)
-            node!.installTap(onBus: 0, bufferSize: 1024, format: outputFormat) { [unowned self] (buffer, _) in
-                self.request.append(buffer)
+            audioToText.node = audioToText.avAudioEngine.inputNode
+            let outputFormat = audioToText.node!.outputFormat(forBus: 0)
+            audioToText.node!.installTap(onBus: 0, bufferSize: 1024, format: outputFormat) { [unowned self] (buffer, _) in
+                self.audioToText.request.append(buffer)
             }
         }
         
         private func startRecording() {
-            if !isPermissionRequesed{
-                requestPermission()
-                isPermissionRequesed = true
-            }
-            avAudioEngine.prepare()
-            do {
-                try avAudioEngine.start()
-                
-                if speechRecognizer?.isAvailable ?? false{
-                    
-                    recognitionTask = speechRecognizer?.recognitionTask(with: request) { [unowned self] (result, _) in
-                        guard let result = result else {return}
-                        let transcription = result.bestTranscription
-                        self.wordsToSayTextField.text = transcription.formattedString
-                    }
-                }
-            } catch {
-                print(error)
+            
+            audioToText.startRecording { [unowned self] (result) in
+                guard let result = result else {return}
+                let transcription = result.bestTranscription
+                self.wordsToSayTextField.text = transcription.formattedString
             }
             
             recordMeButton.setTitle("Stop Recording", for: .normal)
@@ -257,12 +197,9 @@ extension SecondViewController{
         }
         
         private func stopRecording() {
-            avAudioEngine.stop()
-            request.endAudio()
-            recognitionTask?.cancel()
-            node?.removeTap(onBus: 0)
-            node?.reset()
-            isRecordEngineDefined = false
+            
+            audioToText.stopRecording()
+            
             recordMeButton.setTitle("Record Me", for: .normal)
             recordMeIcon.setBackgroundImage(UIImage(systemName: "mic"), for: .normal)
         }
@@ -273,61 +210,41 @@ extension SecondViewController{
 extension SecondViewController{
     
     private func audioFileFrom(url: URL) {
-            if !isPermissionRequesed{
-                requestPermission()
-                isPermissionRequesed = true
-            }
-            setAudioCategoryToPlayAndRecord()
+        
+        audioToText.audioFileFrom(url: url) { [unowned self] (result) in
+        
+            guard let result = result else { return }
             
-            do{
-                audioPlayer = try AVAudioPlayer(contentsOf: url)
-            } catch{
-                print(error)
-            }
-            audioPlayer?.play()
-
-            if speechRecognizer == nil{
+            let words = result.bestTranscription.segments
+            
+            if words.count == 0{
                 return
             }
-          
-            if !speechRecognizer!.isAvailable {
-                print("Speech recognition is not available")
-                return
-            }
-          
-            let request = SFSpeechURLRecognitionRequest(url: url)
-          
-            recognitionTask = speechRecognizer!.recognitionTask(with: request) { [unowned self] (result, error) in
             
-                guard let result = result else { return }
-                
-                let words = result.bestTranscription.segments
-                
-                var sentence = NSMutableString()
-                if words.count > 10{
-                    for i in 1...9{
-                        sentence.append(words[words.count-i].substring)
-                        sentence.append(" ")
-                    }
+            var sentence = NSMutableString()
+            if words.count > 10{
+                for i in 1...9{
+                    sentence.append(words[words.count-i].substring)
+                    sentence.append(" ")
                 }
-                else{
-                    sentence = NSMutableString(string: result.bestTranscription.formattedString)
-                }
-                
-                self.lyricsLabel.text = sentence as String
-                
-                if result.isFinal {
-                    self.setPlayingSongTo(false)
-                }
-                
+            }
+            else{
+                sentence = NSMutableString(string: result.bestTranscription.formattedString)
+            }
+            
+            self.lyricsLabel.text = sentence as String
+            
+            if result.isFinal {
+                self.setPlayingSongTo(false)
             }
         }
+    }
     
     private func setPlayingSongTo(_ shouldPlay:Bool){
-        isPlaying = shouldPlay
+        audioToText.isPlaying = shouldPlay
         if !shouldPlay {
-            audioPlayer?.stop()
-            recognitionTask?.cancel()
+            audioToText.audioPlayer?.stop()
+            audioToText.recognitionTask?.cancel()
             playSongIcon.setBackgroundImage(UIImage(systemName: "play"), for: .normal)
             playSongButton.setTitle("Play Song", for: .normal)
             lyricsLabel.text = ""
@@ -359,39 +276,41 @@ extension SecondViewController{
     }
 }
 
-extension UIView{
-    func setAccesibilityProperties(traits:UIAccessibilityTraits, label:String, hint:String){
-        self.isAccessibilityElement = true
-        self.accessibilityTraits = traits
-        self.accessibilityLabel = label
-        self.accessibilityHint = hint
-    }
-}
+//Aready exist in ViewController
 
-//MARK: Guided Access
-extension AppDelegate: UIGuidedAccessRestrictionDelegate{
-    
-    var guidedAccessRestrictionIdentifiers: [String]? {
-        return ["com.msapps.AccessibilityIOS.restriction.play.song"]
-    }
-    
-    func guidedAccessRestriction(withIdentifier restrictionIdentifier: String, didChange newRestrictionState: UIAccessibility.GuidedAccessRestrictionState) {
-        switch newRestrictionState {
-        case .allow:
-            print("ALLOW")
-        case .deny:
-            print("DENY")
-        default:
-            print("DEFAULT")
-        }
-        NotificationCenter.default.post(name: UIAccessibility.guidedAccessStatusDidChangeNotification, object: restrictionIdentifier)
-    }
-    
-    func textForGuidedAccessRestriction(withIdentifier restrictionIdentifier: String) -> String? {
-        return "Play song restriction"
-    }
-
-}
+//extension UIView{
+//    func setAccesibilityProperties(traits:UIAccessibilityTraits, label:String, hint:String){
+//        self.isAccessibilityElement = true
+//        self.accessibilityTraits = traits
+//        self.accessibilityLabel = label
+//        self.accessibilityHint = hint
+//    }
+//}
+//
+////MARK: Guided Access
+//extension AppDelegate: UIGuidedAccessRestrictionDelegate{
+//
+//    var guidedAccessRestrictionIdentifiers: [String]? {
+//        return ["com.msapps.AccessibilityIOS.restriction.play.song"]
+//    }
+//
+//    func guidedAccessRestriction(withIdentifier restrictionIdentifier: String, didChange newRestrictionState: UIAccessibility.GuidedAccessRestrictionState) {
+//        switch newRestrictionState {
+//        case .allow:
+//            print("ALLOW")
+//        case .deny:
+//            print("DENY")
+//        default:
+//            print("DEFAULT")
+//        }
+//        NotificationCenter.default.post(name: UIAccessibility.guidedAccessStatusDidChangeNotification, object: restrictionIdentifier)
+//    }
+//
+//    func textForGuidedAccessRestriction(withIdentifier restrictionIdentifier: String) -> String? {
+//        return "Play song restriction"
+//    }
+//
+//}
 
 extension SecondViewController{
     

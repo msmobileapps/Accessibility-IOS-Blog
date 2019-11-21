@@ -97,7 +97,7 @@ class AudioToText{
     
     //MARK: Recorded audio to text
     
-    func audioFileFrom(url: URL, complition: @escaping (_ : SFSpeechRecognitionResult?) -> Void) -> Bool{
+    func audioFileFrom(url: URL, complition: @escaping (_ : SFSpeechRecognitionResult?) -> Void){
         if !isPermissionRequesed{
             requestPermission()
             isPermissionRequesed = true
@@ -112,12 +112,12 @@ class AudioToText{
         audioPlayer?.play()
 
         if speechRecognizer == nil{
-            return false
+            complition(SFSpeechRecognitionResult())
         }
       
         if !speechRecognizer!.isAvailable {
             print("Speech recognition is not available")
-            return false
+            complition(SFSpeechRecognitionResult())
         }
       
         let request = SFSpeechURLRecognitionRequest(url: url)
@@ -125,6 +125,5 @@ class AudioToText{
         recognitionTask = speechRecognizer!.recognitionTask(with: request) { (result, error) in
             complition(result)
         }
-        return true
     }
 }
