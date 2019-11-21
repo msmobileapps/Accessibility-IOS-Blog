@@ -21,6 +21,7 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var continueIcon: UIButton!
     @IBOutlet weak var playIcon: UIButton!
+    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var lyricsLabel: UILabel!
     @IBOutlet weak var playSongButton: UIButton!
     @IBOutlet weak var playSongIcon: UIButton!
@@ -65,7 +66,7 @@ class SecondViewController: UIViewController {
         textToSpeech.avSpeechSynthesizer.continueSpeaking() //resume speech
     }
     @IBAction func recordMeWasPressed(_ sender: UIButton) {
-        recordMeButton.setTitle("Loading..", for: .normal)
+//        recordMeButton.setTitle("Loading..", for: .normal)
         if textToSpeech.avSpeechSynthesizer.isSpeaking{
             textToSpeech.avSpeechSynthesizer.stopSpeaking(at: .immediate)
         }
@@ -131,6 +132,7 @@ extension SecondViewController: AVSpeechSynthesizerDelegate{
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         DispatchQueue.main.async { [unowned self] in
             self.setPlayAndPauseIcons(firstStringName: "play.fill", secondStringName: "pause")
+            self.setPlayStateTo(false)
         }
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didPause utterance: AVSpeechUtterance) {
@@ -146,11 +148,15 @@ extension SecondViewController: AVSpeechSynthesizerDelegate{
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         DispatchQueue.main.async { [unowned self] in
             self.setPlayAndPauseIcons(firstStringName: "play", secondStringName: "pause")
+            self.swichPauseStopContinueStateTo(false)
+            self.setPlayStateTo(true)
         }
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         DispatchQueue.main.async { [unowned self] in
             self.setPlayAndPauseIcons(firstStringName: "play", secondStringName: "pause")
+            self.swichPauseStopContinueStateTo(false)
+            self.setPlayStateTo(true)
         }
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) { }
@@ -162,6 +168,11 @@ extension SecondViewController: AVSpeechSynthesizerDelegate{
         } else {
             //TODO: Change images
         }
+    }
+    
+    func setPlayStateTo(_ isEnabled:Bool){
+        self.playIcon.isEnabled = isEnabled
+        self.playButton.isEnabled = isEnabled
     }
 }
 
