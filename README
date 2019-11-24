@@ -1,1 +1,72 @@
-hello world
+# Accessibility In IOS Example App
+
+This app demonstrates the possibilities and the possible uses of the accessibilities in IOS.
+
+It includes the following accessibilities:
+
+* Speech: Text to speech, recorded and live audio to text
+* Voice Over
+* Guided access
+
+## Description
+
+In this app the user can write text and turn it to speech and controlling it.
+The app also enables to record user's voice and converting it into text. The text is written to the user and he is able to play it by the devices voice.
+In addition, the user can play a song that is stored in the app and automatically convert it into a text.
+
+If the user chooses to turn on Voice Over he could see that all the views in the app have proper descriptions.
+
+Furthermore, if the user turns on the Guided Access the "Play song" button will be disabled.
+
+## How to check out app accessibilities
+
+* **Text to speech:**
+In order to see this feature you have to write text in the text field (marked in red) and press the "Read The Text" button (marked in green). Then you can also control the speech with the buttons "Pause", "Stop" and "Continue" (marked in blue).
+
+![Text to speech](https://i.imgur.com/Fy5sxcf.png)
+
+* **Live speech to text:**
+To experience this feature press "Record Me" button (marked in red) and speak to the device microphone.
+The spoken text will be displayed in the text field (marked in blue).
+
+![Live speech to text](https://i.imgur.com/oLD4tkM.png)
+
+* **Recorded speech to text:**
+
+To display this feature press "Play Song" (marked in red) button and play a random song from your library, then this song will be translated into text in the text label (marked in blue).
+
+![Recorded speech to text](https://i.imgur.com/wCDeBsy.png)
+
+* **Voice over:**
+In order to test this feature activate voice over in your device and click on each of the views on the screen. You will get their full descriptions pronounced.
+
+To activate Voice over go to  settings -> accessibility -> Voice over -> switch to "On".
+
+* **Guided access:**
+This feature is seen when you turn on the Guided access in your device. The app automatically detects that and make the "Play Song" button disabled. When the Guided access is turned off the button becomes back to active.
+In order to activate Guided access go to settings -> Guided access -> switch to "On".
+
+## Screenshots
+
+![white screen](https://i.imgur.com/5sxKyEC.png)
+![black screen](https://i.imgur.com/TlwN6a7.png)
+
+## Technologies
+* Speech
+* Voice Over
+* Guided access
+
+#### Programs and Languages:
+
+The project is created for IOS with:
+* Swift version: 5.0
+* Xcode version: 11.2.1
+
+## Download
+The app project:
+```
+$ git clone https://danielRad@bitbucket.org/danielRad/accessibility-ios-blog.git
+```
+
+## License
+© MSApps
