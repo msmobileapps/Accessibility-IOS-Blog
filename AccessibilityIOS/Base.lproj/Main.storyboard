@@ -332,27 +332,34 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ms-c-logo" translatesAutoresizingMaskIntoConstraints="NO" id="4tl-bF-XG6">
+                                <rect key="frame" x="103.5" y="650" width="207" height="134"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="21M-EV-4fr" firstAttribute="top" secondItem="tcG-bI-ydI" secondAttribute="bottom" constant="40" id="8Sj-0Q-wrT"/>
                             <constraint firstItem="NoI-cz-hTk" firstAttribute="top" secondItem="gDG-Vn-7eV" secondAttribute="bottom" constant="48" id="90c-vs-H1j"/>
                             <constraint firstItem="hYI-bO-AGR" firstAttribute="centerX" secondItem="F99-QG-4XW" secondAttribute="centerX" id="BkH-gJ-1JU"/>
+                            <constraint firstItem="4tl-bF-XG6" firstAttribute="centerX" secondItem="F99-QG-4XW" secondAttribute="centerX" id="C3h-xr-SYI"/>
                             <constraint firstItem="tcG-bI-ydI" firstAttribute="centerX" secondItem="F99-QG-4XW" secondAttribute="centerX" multiplier="0.65" id="E0p-VA-36S"/>
                             <constraint firstItem="gDG-Vn-7eV" firstAttribute="centerY" secondItem="F99-QG-4XW" secondAttribute="centerY" multiplier="0.5" id="FBI-0G-rVw"/>
                             <constraint firstItem="vLg-ag-7iZ" firstAttribute="trailing" secondItem="gDG-Vn-7eV" secondAttribute="trailing" constant="40" id="Jey-vq-dRy"/>
                             <constraint firstItem="Qu0-kM-hy2" firstAttribute="centerX" secondItem="F99-QG-4XW" secondAttribute="centerX" multiplier="1.5" id="PDF-c6-xNP"/>
                             <constraint firstItem="6gj-sl-bFh" firstAttribute="centerX" secondItem="F99-QG-4XW" secondAttribute="centerX" multiplier="0.5" id="YCu-qE-bAW"/>
+                            <constraint firstItem="4tl-bF-XG6" firstAttribute="height" secondItem="F99-QG-4XW" secondAttribute="height" multiplier="0.15" id="YFQ-Bd-kow"/>
                             <constraint firstItem="Phj-fW-NyN" firstAttribute="top" secondItem="hYI-bO-AGR" secondAttribute="bottom" constant="40" id="aGZ-vQ-P21"/>
                             <constraint firstItem="gDG-Vn-7eV" firstAttribute="leading" secondItem="vLg-ag-7iZ" secondAttribute="leading" constant="40" id="aGd-YA-7Nh"/>
                             <constraint firstItem="Phj-fW-NyN" firstAttribute="leading" secondItem="vLg-ag-7iZ" secondAttribute="leading" constant="24" id="frI-IQ-sdX"/>
                             <constraint firstItem="21M-EV-4fr" firstAttribute="centerX" secondItem="F99-QG-4XW" secondAttribute="centerX" id="kj5-8b-Rsx"/>
                             <constraint firstItem="6gj-sl-bFh" firstAttribute="top" secondItem="tcG-bI-ydI" secondAttribute="bottom" constant="40" id="mUm-VS-LNV"/>
+                            <constraint firstItem="4tl-bF-XG6" firstAttribute="width" secondItem="F99-QG-4XW" secondAttribute="width" multiplier="0.5" id="pcd-Ql-ggE"/>
                             <constraint firstItem="vLg-ag-7iZ" firstAttribute="trailing" secondItem="Phj-fW-NyN" secondAttribute="trailing" constant="24" id="ph0-i8-OcC"/>
                             <constraint firstItem="tcG-bI-ydI" firstAttribute="top" secondItem="gDG-Vn-7eV" secondAttribute="bottom" constant="48" id="pkR-Jn-9vJ"/>
                             <constraint firstItem="Qu0-kM-hy2" firstAttribute="top" secondItem="NoI-cz-hTk" secondAttribute="bottom" constant="40" id="s2g-jW-2HD"/>
                             <constraint firstItem="NoI-cz-hTk" firstAttribute="centerX" secondItem="F99-QG-4XW" secondAttribute="centerX" multiplier="1.35" id="tBs-Hu-030"/>
                             <constraint firstItem="hYI-bO-AGR" firstAttribute="centerY" secondItem="F99-QG-4XW" secondAttribute="centerY" multiplier="1.25" id="tfM-Qb-oTv"/>
+                            <constraint firstItem="4tl-bF-XG6" firstAttribute="top" secondItem="Phj-fW-NyN" secondAttribute="bottom" constant="24" id="ueL-NZ-Whk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vLg-ag-7iZ"/>
                     </view>
@@ -381,6 +388,7 @@
     <resources>
         <image name="arrow.right" catalog="system" width="64" height="48"/>
         <image name="mic" catalog="system" width="54" height="64"/>
+        <image name="ms-c-logo" width="2003" height="491"/>
         <image name="pause" catalog="system" width="44" height="64"/>
         <image name="play" catalog="system" width="60" height="64"/>
         <image name="stop" catalog="system" width="64" height="56"/>

@@ -18,6 +18,7 @@
 		DA9B53C22386850700067988 /* AudioToText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9B53C12386850700067988 /* AudioToText.swift */; };
 		DA9B53C423868DAE00067988 /* TextToSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9B53C323868DAE00067988 /* TextToSpeech.swift */; };
 		DA9B53C623868F8100067988 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9B53C523868F8000067988 /* SecondViewController.swift */; };
+		DA9B53CD2386DD5B00067988 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA9B53CC2386DD5B00067988 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		DA9B53C12386850700067988 /* AudioToText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioToText.swift; sourceTree = "<group>"; };
 		DA9B53C323868DAE00067988 /* TextToSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeech.swift; sourceTree = "<group>"; };
 		DA9B53C523868F8000067988 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		DA9B53CC2386DD5B00067988 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				DA9B53C823868F9700067988 /* models */,
 				DA9B53C723868F8F00067988 /* controllers */,
 				DA9B53A323851CDA00067988 /* Main.storyboard */,
+				DA9B53CC2386DD5B00067988 /* Assets.xcassets */,
 				DA9B53AE23851CDB00067988 /* Info.plist */,
 				DA9B53A623851CDA00067988 /* AccessibilityIOS.xcdatamodeld */,
 			);
@@ -185,6 +188,7 @@
 			files = (
 				DA9B53AD23851CDB00067988 /* LaunchScreen.storyboard in Resources */,
 				DA9B53A523851CDA00067988 /* Main.storyboard in Resources */,
+				DA9B53CD2386DD5B00067988 /* Assets.xcassets in Resources */,
 				DA9B53BA2385561B00067988 /* LoveTheWayYouLie.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
