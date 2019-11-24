@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import Speech
+import MediaPlayer
 
 class ViewController: UIViewController {
     @IBOutlet weak var wordsToSayTextField: UITextField!
@@ -28,6 +29,10 @@ class ViewController: UIViewController {
     
     let textToSpeech = TextToSpeech.shared
     let audioToText = AudioToText.shared
+    
+    lazy var songsFromDevice:[MPMediaItem]? = {
+        return MPMediaQuery.songs().items
+    }()
     
     @IBAction func readTextWasPressed(_ sender: UIButton) {
         if audioToText.avAudioEngine.isRunning{
@@ -88,8 +93,11 @@ class ViewController: UIViewController {
             setPlayingSongTo(false)
         }
         else{
-            let fileURL = Bundle.main.path(forResource: "LoveTheWayYouLie", ofType: "mp3")!
-            audioFileFrom(url: URL(fileURLWithPath: fileURL))
+            let urlSongFromDevice = songsFromDevice?.randomElement()?.assetURL
+            if urlSongFromDevice == nil{
+                return
+            }
+            audioFileFrom(url: urlSongFromDevice!)
             setPlayingSongTo(true)
         }
     }

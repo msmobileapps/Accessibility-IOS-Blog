@@ -13,7 +13,6 @@
 		DA9B53A823851CDA00067988 /* AccessibilityIOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA9B53A623851CDA00067988 /* AccessibilityIOS.xcdatamodeld */; };
 		DA9B53AD23851CDB00067988 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9B53AB23851CDB00067988 /* LaunchScreen.storyboard */; };
 		DA9B53B72385393D00067988 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9B53B62385393D00067988 /* AudioToolbox.framework */; };
-		DA9B53BA2385561B00067988 /* LoveTheWayYouLie.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA9B53B92385561B00067988 /* LoveTheWayYouLie.mp3 */; };
 		DA9B53C22386850700067988 /* AudioToText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9B53C12386850700067988 /* AudioToText.swift */; };
 		DA9B53C423868DAE00067988 /* TextToSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9B53C323868DAE00067988 /* TextToSpeech.swift */; };
 		DA9B53C623868F8100067988 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9B53C523868F8000067988 /* ViewController.swift */; };
@@ -30,7 +29,6 @@
 		DA9B53AE23851CDB00067988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA9B53B42385393D00067988 /* AccessibilityIOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AccessibilityIOS.entitlements; sourceTree = "<group>"; };
 		DA9B53B62385393D00067988 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		DA9B53B92385561B00067988 /* LoveTheWayYouLie.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LoveTheWayYouLie.mp3; sourceTree = "<group>"; };
 		DA9B53C12386850700067988 /* AudioToText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioToText.swift; sourceTree = "<group>"; };
 		DA9B53C323868DAE00067988 /* TextToSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeech.swift; sourceTree = "<group>"; };
 		DA9B53C523868F8000067988 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +69,6 @@
 			children = (
 				DA9B53B42385393D00067988 /* AccessibilityIOS.entitlements */,
 				DA9B53C923868FBA00067988 /* Supported Files */,
-				DA9B53B82385560000067988 /* audioFiles */,
 				DA9B53C823868F9700067988 /* models */,
 				DA9B53C723868F8F00067988 /* controllers */,
 				DA9B53A323851CDA00067988 /* Main.storyboard */,
@@ -88,14 +85,6 @@
 				DA9B53B62385393D00067988 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DA9B53B82385560000067988 /* audioFiles */ = {
-			isa = PBXGroup;
-			children = (
-				DA9B53B92385561B00067988 /* LoveTheWayYouLie.mp3 */,
-			);
-			path = audioFiles;
 			sourceTree = "<group>";
 		};
 		DA9B53C723868F8F00067988 /* controllers */ = {
@@ -186,7 +175,6 @@
 				DA9B53AD23851CDB00067988 /* LaunchScreen.storyboard in Resources */,
 				DA9B53A523851CDA00067988 /* Main.storyboard in Resources */,
 				DA9B53CD2386DD5B00067988 /* Assets.xcassets in Resources */,
-				DA9B53BA2385561B00067988 /* LoveTheWayYouLie.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

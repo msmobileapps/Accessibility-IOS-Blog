@@ -43,6 +43,8 @@
 	<string>Access to speech recognition is needed</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Access to microphone is needed</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Access to media files is needed</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
